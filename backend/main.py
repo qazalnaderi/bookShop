@@ -18,4 +18,4 @@ app.include_router(router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello Dear! Welcome to our bookshop. backend implemented by Qazal Naderi "}
+    return {"message": "Hello Dear! Welcome to our bookshop."}
