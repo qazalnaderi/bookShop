@@ -1,0 +1,82 @@
+.header {
+    width: 70vw; 
+    height: 40vw;
+    margin: 30px auto;
+    background: url('/back_7.png') no-repeat;
+    background-size: cover; 
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden; 
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1; 
+}
+
+.header-contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+    color: #edede7;
+    z-index: 2; 
+    animation: fadeIn 3s ;
+}
+
+.header-contents h2 {
+    font-weight: 300;
+    font-size: max(4.5vw, 22px);
+    flex-flow: row wrap;
+    position: relative;
+    right: 50px;
+}
+.header-contents p{
+    font-size: 1.5vw;
+    position: relative;
+    right: 50px;
+}
+.header-contents button{
+    border: none;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background-color: rgb(255, 112, 87);
+    color: #edede7;
+    font-size: max(1vw, 13px);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.header-contents button:hover{
+    background: #256250;
+    color: #edede7;
+}
+
+@media (max-width :1050px){
+    
+    .header-contents{
+        max-width: 45%;
+    }
+}
+
+@media (max-width :750px){
+    
+    .header-contents{
+        max-width: 65%;
+    }
+    .header-contents p{
+        display: none;
+    }
+    .header-contents button{
+        padding: 2vw 4vw;
+    }
+}
