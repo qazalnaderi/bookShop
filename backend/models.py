@@ -5,10 +5,9 @@ from sqlalchemy.orm import relationship
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, primary_key=True, index=True ,autoincrement=True)
     name = Column(String, index=True)
-    email = Column(BigInteger, unique=True, index=True, nullable=False)
-    number = Column(BigInteger,nullable=False, unique=True)
+    email = Column(String, unique=True, index=True, nullable=False)
     password = Column(Text, nullable=False)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
@@ -28,11 +27,15 @@ class Admin(Base):
 class Book(Base):
     __tablename__ = "books"
 
-    id = Column(Integer, primary_key=True, index=True)
+    book_id = Column(Integer, primary_key=True, index=True ,autoincrement=True)
     title = Column(String, index=True, nullable=False)
     author = Column(String, nullable=False)
     price = Column(Float, nullable=False)
-    quantity = Column(Integer, default=0) 
+    image = Column(String, nullable=True) 
+    category = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+           
+    
 
     orders = relationship("Order", back_populates="book") 
 
@@ -40,8 +43,8 @@ class Order(Base):
     __tablename__ = "orders"
 
     order_id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    book_id = Column(Integer, ForeignKey("books.id", ondelete="CASCADE"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.user_id", ondelete="CASCADE"), nullable=False)
+    book_id = Column(Integer, ForeignKey("books.book_id", ondelete="CASCADE"), nullable=False)
     quantity = Column(Integer, nullable=False)
     total_price = Column(Numeric(10, 2), nullable=False)
     order_date = Column(DateTime, server_default=func.now(), nullable=False)

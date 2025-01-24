@@ -11,7 +11,12 @@ def validate_name(name: str) -> str:
         return "Name can only contain alphabetic characters and spaces."
     return None
 
-
+def validate_email(email: str):
+    if re.match(r"^[a-zA-Z0-9._%+-]+@gmail\.com$", email):
+      return "Valid Gmail address"
+    else:
+        return "Invalid Gmail address"
+    
 def check_password_strength(password: str) -> str:
     if len(password) < MIN_PASSWORD_LENGTH:
         return "Password must be at least 8 characters long."
